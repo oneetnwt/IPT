@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: "Geist Mono", sans-serif;
+    background: #151314;
+    color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    background: #1f1f1f;
+    padding: 1.25rem 3.125rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 0.5rem;
+}
+
+.card > img {
+    width: 6.25rem;
+    align-self: center;
+}
+
+.card > h1 {
+    text-align: center;
+}
+
+.card > p {
+    text-align: center;
+    font-size: 0.90rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+input {
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+input:focus {
+    outline: none;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+input, button {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+}
+
+button {
+    background: none;
+    border: 1px solid #fff;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #fff;
+    color: #151314;
+    border: 1px solid #fff;
+}
+
+a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
