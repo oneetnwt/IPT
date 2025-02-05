@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: "Geist Mono", sans-serif;
+    background: #181818;
+    color: white;
+    display: grid;
+    grid-template-columns: 15rem auto;
+}
+
+.sidebar {
+    background: #121212;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.head > img {
+    width: 10rem;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+li {
+    padding: 1rem;
+    width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease-in-out;
+}
+
+li:hover:not(.active) {
+    background: #303030;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.topbar {
+    padding: 1.25rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    background: #121212;
+}
+
+.search {
+    padding: 0.5rem 1rem;
+    background: #fff;
+    width: fit-content;
+    border-radius: 0.25rem;
+}
+
+.search input {
+    border: none;
+    outline: none;
+    background: none;
+    font-family: "Geist Mono", sans-serif;
+}
+
+input::placeholder {
+    color: #151314;
+    font-family: "Geist Mono", sans-serif;
+}
+
+.search-icon {
+    color: #181818;
+}
+
+.user-profile {
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
+    align-items: center;
+}
+
+.user-profile > p {
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.user-profile > img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.content {
+    padding: 1rem;
+}
+
+/* Active Class */
+.active {
+    background: #fff;
+    color: #151314;
+    font-weight: bold;
+}

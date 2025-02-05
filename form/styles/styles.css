@@ -10,7 +10,7 @@
 body {
     height: 100vh;
     font-family: "Geist Mono", sans-serif;
-    background: #151314;
+    background: #121212;
     color: white;
 }
 
@@ -22,7 +22,7 @@ body {
 }
 
 .card {
-    background: #1f1f1f;
+    background: #181818;
     padding: 1.25rem 3.125rem;
     display: flex;
     flex-direction: column;
