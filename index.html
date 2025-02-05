@@ -1,66 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap");
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
+      body {
+        font-family: "Geist Mono", sans-serif;
+        color: #f1f1f1;
+        height: 100vh;
+        background: #151314;
+        display: flex;
+      }
+
+      .container {
+        background: #1f1f1f;
+        padding: 2rem;
+        margin: auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        border-radius: 0.5rem;
+      }
+
+      .container > img {
+        width: 100px;
+        height: 100px;
+      }
+
+      button {
+        background: none;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: 1px solid white;
+        border-radius: 1rem;
+        transition: all 0.3s ease-in-out;
+      }
+
+      button:hover {
+        background: #45a5ff;
+        border: 1px solid #45a5ff;
+        color: #f1f1f1;
+      }
+
+      @media only screen and (max-width: 600px) {
         body {
-            font-family: "Geist Mono", sans-serif;
-            color: #f1f1f1;
-            height: 100vh;
-            background: #151314;
-            display: flex;
+          height: 100vh;
         }
-
-        .container {
-            background: #1f1f1f;
-            padding: 2rem;
-            margin: auto;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            border-radius: 0.5rem;
-        }
-
-        .container > img {
-            width: 100px;
-            height: 100px;
-        }
-
-        button {
-            background: none;
-            color: white;
-            padding: 0.5rem 1rem;
-            border: 1px solid white;
-            border-radius: 1rem;
-            transition: all 0.3s ease-in-out;
-        }
-
-        button:hover {
-            background: #45A5FF;
-            border: 1px solid #45A5FF;
-            color: #f1f1f1;
-        }
+      }
     </style>
-    <link rel="icon" href="form/img/padayunITLogo.png">
+    <link rel="icon" href="form/img/padayunITLogo.png" />
     <title>Padayun IT</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <img src="form/img/padayunITLogo.png" alt="Logo">
-        <h1>Padayun IT</h1>
-        <button type="button" onclick="window.location.href='form/login.html'">Get started</button>
+      <img src="form/img/padayunITLogo.png" alt="Logo" />
+      <h1>Padayun IT</h1>
+      <button type="button" onclick="window.location.href='form/login.html'">
+        Get started
+      </button>
     </div>
-</body>
+  </body>
 </html>

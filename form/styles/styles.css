@@ -28,6 +28,7 @@ body {
     flex-direction: column;
     gap: 1rem;
     border-radius: 0.5rem;
+    max-width: 400px;
 }
 
 .card > img {
@@ -70,6 +71,18 @@ input, button {
     border-radius: 0.25rem;
 }
 
+input[id="firstName"], input[id="lastName"] {
+    text-transform: capitalize;
+    max-width: 48%;
+}
+
+.name {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.75rem;
+    width: 100%;
+}
+
 button {
     background: none;
     border: 1px solid #fff;
@@ -88,4 +101,10 @@ a {
     color: inherit;
     text-decoration: underline;
     text-underline-offset: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+      height: 100vh;
+    }
 }
