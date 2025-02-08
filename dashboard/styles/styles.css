@@ -2,34 +2,40 @@
 
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
 }
 
 body {
-    height: 100vh;
-    font-family: "Geist Mono", sans-serif;
-    background: #181818;
-    color: white;
+    height: 100vh !important;
+    font-family: "Geist Mono", sans-serif !important;
+    background: #181818 !important;
+    color: white !important;
     display: grid;
     grid-template-columns: 15rem auto;
 }
 
 .sidebar {
+    height: 100%;
     background: #121212;
-    padding: 20px;
+    padding: 20px !important;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2rem !important;
 }
 
 .head {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+.head > h1 {
+    font-size: 1.75rem;
+    text-transform: uppercase;
 }
 
 .head > img {
@@ -40,35 +46,35 @@ ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.5rem !important;
 }
 
 li {
-    padding: 1rem;
-    width: 100%;
+    padding: 1rem !important;
+    width: 100% !important;
     height: auto;
     border-radius: 0.25rem;
     transition: all 0.3s ease-in-out;
 }
 
 li:hover:not(.active) {
-    background: #303030;
+    background: #303030 !important;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+    color: inherit !important;
+    text-decoration: none !important;
 }
 
 .topbar {
-    padding: 1.25rem 1rem;
+    padding: 1.25rem 1rem !important;
     display: flex;
     justify-content: space-between;
     background: #121212;
 }
 
 .search {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem !important;
     background: #fff;
     width: fit-content;
     border-radius: 0.25rem;
@@ -92,7 +98,7 @@ input::placeholder {
 
 .user-profile {
     display: flex;
-    gap: 1rem;
+    gap: 1rem !important;
     cursor: pointer;
     align-items: center;
 }
@@ -110,12 +116,72 @@ input::placeholder {
 }
 
 .content {
-    padding: 1rem;
+    padding: 1rem !important;
+    height: auto;
+}
+
+.content > h1 {
+    font-weight: 800;
 }
 
 /* Active Class */
 .active {
-    background: #fff;
-    color: #151314;
+    background: #fff !important;
+    color: #151314 !important;
+    font-weight: bold !important;
+}
+
+/* Custom CSS Bootstrap */
+.custom-table-dark {
+    background-color: #121212 !important;
+    color: red !important;
+}
+
+/* Dashboard */
+table {
+    margin-top: 1rem !important;
+}
+
+th, td {
+    padding: 0.5rem !important;
+    background: #181818 !important;
+}
+
+td {
+    transition: all 0.3s ease-in-out;
+}
+
+tr:hover td {
+    background: #303030 !important;
+}
+
+/* Products */
+.product-card {
+    background-color: #121212 !important;
+    color: #fff !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    background: #303030 !important;
+}
+
+.card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    padding: 1rem !important;
+}
+
+.card-body > h5 {
     font-weight: bold;
+}
+
+.card-body > h6 {
+    font-size: 0.80rem;
+    font-weight: 400;
+}
+
+.btn {
+    border: 1px solid #fff !important;
 }
