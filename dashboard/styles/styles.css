@@ -13,19 +13,16 @@ body {
     background: #181818 !important;
     color: white !important;
     display: grid;
-    grid-template-columns: 15rem auto;
+    grid-template-columns: 12rem auto;
 }
 
 .sidebar {
     height: 100%;
     background: #121212;
-    padding: 20px !important;
+    align-items: center;
+    padding: 0 !important;
     display: flex;
     flex-direction: column;
-    gap: 2rem !important;
-    position: sticky;
-    top: 0;
-    align-self: start;
 }
 
 .head {
@@ -34,14 +31,15 @@ body {
     justify-content: center !important;
     align-items: center !important;
     gap: 1rem !important;
+    margin-top: 2rem !important;
 }
 
-.head > h1 {
-    font-size: 1.75rem;
+.head>h1 {
+    font-size: 1.25rem;
     text-transform: uppercase;
 }
 
-.head > img {
+.head>img {
     width: 10rem;
 }
 
@@ -49,11 +47,10 @@ ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem !important;
 }
 
 li {
-    padding: 1rem !important;
+    padding: 0.75rem 1rem !important;
     width: 100% !important;
     height: auto;
     border-radius: 0.25rem;
@@ -61,7 +58,11 @@ li {
 }
 
 li:hover:not(.active) {
-    background: #303030 !important;
+    color: #168FFF !important;
+}
+
+li:hover:last-child {
+    color: #F74141 !important;
 }
 
 a {
@@ -77,6 +78,9 @@ a {
     display: flex;
     justify-content: space-between;
     background: #121212;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 
 .search {
@@ -109,12 +113,12 @@ input::placeholder {
     align-items: center;
 }
 
-.user-profile > p {
+.user-profile>p {
     font-weight: 400;
     font-size: 1rem;
 }
 
-.user-profile > img {
+.user-profile>img {
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
@@ -126,14 +130,13 @@ input::placeholder {
     height: auto;
 }
 
-.content > h1 {
+.content>h1 {
     font-weight: 600;
 }
 
 /* Active Class */
 .active {
-    background: #fff !important;
-    color: #151314 !important;
+    color: #168FFF !important;
     font-weight: bold !important;
 }
 
@@ -148,7 +151,8 @@ table {
     margin-top: 1rem !important;
 }
 
-th, td {
+th,
+td {
     padding: 0.5rem !important;
 }
 
@@ -159,6 +163,7 @@ th {
 
 td {
     background: #181818 !important;
+    color: #fff !important;
     transition: all 0.3s ease-in-out;
 }
 
@@ -177,10 +182,12 @@ tr:hover td {
 }
 
 .product-card img {
-    height: 180px; /* Adjust image size */
+    height: 180px;
+    /* Adjust image size */
     width: 100%;
-    object-fit: cover; /* Ensures the image maintains aspect ratio */
-  }
+    object-fit: cover;
+    /* Ensures the image maintains aspect ratio */
+}
 
 .product-card:hover {
     background: #303030 !important;
@@ -203,21 +210,22 @@ tr:hover td {
     justify-content: space-between;
 }
 
-.info > h5 {
+.info>h5 {
     font-weight: bold;
     font-size: 100%;
 }
 
-.info > p {
+.info>p {
     color: rgba(255, 255, 255, 0.5);
     font-size: 75%;
     overflow-y: hidden;
 }
 
-.card-body > h6 {
+.card-body>h6 {
     font-size: 0.80rem;
     font-weight: 400;
     font-family: sans-serif;
+    color: #00BA34;
 }
 
 .btn {
@@ -231,4 +239,72 @@ button.btn:hover {
     border: 1px solid #fff !important;
     color: #121212;
     font-weight: bold;
-} 
+}
+
+.settings {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.update-profile {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    gap: 0.5rem;
+
+    input {
+        padding: 0.25rem 0.5rem !important;
+        width: auto;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    input,
+    button {
+        background: inherit;
+        color: #fff;
+        border-radius: 0.25rem;
+    }
+
+    input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    button {
+        margin-top: 1.5rem !important;
+        padding: 0.5rem 0.75rem !important;
+        border: 1px solid #fff;
+        font-weight: bold;
+        width: fit-content;
+        transition: all 0.2s ease-in-out;
+    }
+
+    button:hover {
+        background: #fff;
+        font-weight: bold;
+        color: #121212;
+    }
+}
+
+.image-hover {
+    width: 18rem !important;
+    /* Specify the width */
+    height: 18rem !important;
+    background-image: url(../../assets/profile.jpg);
+    /* Initial background image */
+    background-size: cover;
+    /* Cover the entire area of the element */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-image 0.3s ease-in-out;
+    /* Smooth transition */
+}
+
+.image-hover:hover {
+    background-image: url(../../assets/profile-hover.png);
+    /* Change on hover */
+}
