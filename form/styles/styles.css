@@ -31,16 +31,16 @@ body {
     max-width: 400px;
 }
 
-.card > img {
+.card>img {
     width: 6.25rem;
     align-self: center;
 }
 
-.card > h1 {
+.card>h1 {
     text-align: center;
 }
 
-.card > p {
+.card>p {
     text-align: center;
     font-size: 0.90rem;
 }
@@ -66,12 +66,14 @@ input::placeholder {
     color: rgba(255, 255, 255, 0.5);
 }
 
-input, button {
+input,
+button {
     padding: 0.5rem 0.75rem;
     border-radius: 0.25rem;
 }
 
-input[id="firstName"], input[id="lastName"] {
+input[id="firstName"],
+input[id="lastName"] {
     text-transform: capitalize;
     max-width: 48%;
 }
@@ -105,6 +107,6 @@ a {
 
 @media only screen and (max-width: 600px) {
     body {
-      height: 100vh;
+        height: 100vh;
     }
 }
