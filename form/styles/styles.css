@@ -9,6 +9,7 @@
 
 body {
     height: 100vh;
+    height: 100dvh;
     font-family: "Geist Mono", sans-serif;
     background: #121212;
     color: white;
