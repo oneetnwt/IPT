@@ -308,3 +308,48 @@ button.btn:hover {
     background-image: url(../../assets/profile-hover.png);
     /* Change on hover */
 }
+
+/* Accounts */
+.main-user {
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+    gap: 1rem;
+}
+
+.userForm, .userTable {
+    height: 100%;
+    width: 100%;
+}
+
+.userForm {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 2rem 1rem !important;
+    border-radius: 6px;
+}
+
+#userForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.userInput, .searchInput {
+    padding: 0.25rem 0.5rem !important;
+    width: auto;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    color: #fff;
+    border-radius: 6px;
+}
+
+.userInput::placeholder, .searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.searchInput {
+    width: 100%;
+}
+
+.userTable > table {
+    width: 100%;
+}
