@@ -63,8 +63,8 @@
             <input type="text" placeholder="Last Name" class="userInput" id="lastName">
             <input type="number" placeholder="Age" class="userInput" id="age">
             <input type="text" placeholder="Address" class="userInput" id="address">
-            <button type="button" style="background: #168FFF; color: white; border: none; border-radius: 6px; padding: 0.25rem 0.5rem !important;" onclick="addUser()">Add User</button>
-            <button type="button" style="background: #168FFF; color: white; border: none; border-radius: 6px; padding: 0.25rem 0.5rem !important; display: none;">Update User</button>
+            <button id="add" type="button" style="background: #168FFF; color: white; border: none; border-radius: 6px; padding: 0.25rem 0.5rem !important;" onclick="addUser()">Add User</button>
+            <button id="update" type="button" style="background: #168FFF; color: white; border: none; border-radius: 6px; padding: 0.25rem 0.5rem !important; display: none;" onclick="updateUserDetails(this)">Update User</button>
           </form>
         </div>
         <div class="userTable">
