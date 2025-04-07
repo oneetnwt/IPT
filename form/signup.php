@@ -15,14 +15,15 @@
       <img src="../assets/padayunITLogo.png" alt="" />
       <h1>Sign up</h1>
       <p>Create an account</p>
-      <form action="login.html">
+      <form action="signup_validation.php" method="POST">
         <div class="name">
-          <input type="text" placeholder="First name" id="firstName" />
-          <input type="text" placeholder="Last name" id="lastName" />
+          <input type="text" placeholder="First name" id="firstName" name="firstname" />
+          <input type="text" placeholder="Last name" id="lastName" name="lastname" />
         </div>
-        <input type="email" placeholder="Email" />
-        <input type="text" placeholder="Username" />
-        <input type="password" placeholder="Password" />
+        <input type="email" placeholder="Email" name="email" />
+        <input type="text" placeholder="Username" name="username" />
+        <input type="password" placeholder="Password" name="password"/>
+        <input type="password" placeholder="Password" name="confirm_password"/>
         <button>Sign up</button>
       </form>
       <span style="font-size: 0.75rem">
