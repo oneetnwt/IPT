@@ -30,12 +30,12 @@
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = 'true';
-        $mail->Username = "jeffivanbiosanomayor@gmail.com";
-        $mail->Password = "uokm pqjh jdil qhzb";
+        $mail->Username = $_ENV['APP_EMAIL'];
+        $mail->Password = $_ENV['APP_PASSWORD'];
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        $mail->setFrom("jeffivanbiosanomayor@gmail.com", "Jeff Ivan Mayor");
+        $mail->setFrom($_ENV['APP_EMAIL'], $_ENV['APP_NAME']);
         $mail->addAddress($email, "THIS IS YOUR CLIENT");
 
         $mail->isHTML(true);

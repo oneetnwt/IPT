@@ -1,3 +1,23 @@
+<?php
+  session_start();
+
+  require '../includes/db.php';
+
+  if($_SERVER['REQUEST_METHOD'] === "POST"){
+    $enteredCode = $_POST['code'];
+    $email = $_SESSION['email'];
+
+    if(!isset($_SESSION['email'])){
+      $_SESSION['error'] = "No email session found, please try again.";
+      header("Location: send-code.php");
+      exit();
+    }
+
+    $stmt  = $pdo->prepare("SELECT reset_code FROM users WHERE email = ?");
+    $stmt->execute([$email]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,8 +54,8 @@
           unset($_SESSION['success']); ?>
         </p>
       <?php endif; ?>
-      <form action="new-password.html">
-        <input type="number" placeholder="Enter code" maxlength="6" />
+      <form action="send-code.php" method="POST">
+        <input type="number" placeholder="Enter code" maxlength="6" name="code"/>
         <button>Submit</button>
       </form>
     </div>
