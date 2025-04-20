@@ -21,6 +21,19 @@
     <div class="card">
       <img src="../assets/padayunITLogo.png" alt="" />
       <h3 style="text-align: center">Enter code</h3>
+      <?php if (isset($_SESSION['error'])): ?>
+        <p id="alertMessage" style="border: 1px solid #F74141; padding: 0.5rem 1rem !important; border-radius: 0.25rem; display: block; color: #F74141;">
+          <?= $_SESSION['error'];
+          unset($_SESSION['error']); ?>
+        </p>
+      <?php endif; ?>
+
+      <?php if (isset($_SESSION['success'])): ?>
+        <p id="alertMessage" style="border: 1px solid #77DD77; padding: 0.5rem 1rem !important; border-radius: 0.25rem; display: block; color: #77DD77;">
+          <?= $_SESSION['success'];
+          unset($_SESSION['success']); ?>
+        </p>
+      <?php endif; ?>
       <form action="new-password.html">
         <input type="number" placeholder="Enter code" maxlength="6" />
         <button>Submit</button>

@@ -13,7 +13,7 @@
 
         if($password !== $confirm){
             $_SESSION['error'] = "Passwords do not match";
-            header("signup.php");
+            header("Location: signup.php");
             exit();
         }
 
@@ -22,17 +22,22 @@
 
         if($stmt->rowCount() > 0){
             $_SESSION['error'] = "Usernaem already exists";
-            header("signup.php");
+            header("Location: signup.php");
             exit();
         }
 
         $hashPassword = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $pdo->prepare("INSERT INTO users (firstname, lastname, username, email, password) VALUES (?, ?, ?, ?, ?)");
-        $stmt->execute([$firstname, $lastname, $username, $email, $hashPassword]);
+        
+        if($stmt->execute([$firstname, $lastname, $username, $email, $hashPassword])){
+            $_SESSION['success'] = "Your account has been created. You can now log in.";
+            header("Location: login.php");
+            exit();
+        } else {
+            echo "There is an Error";
+            exit();
+        }
 
-        $_SESSION['success'] = "Your account has been created. You can now log in.";
-        header("login.html");
-        exit();
     }
 
 ?>
