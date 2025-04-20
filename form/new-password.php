@@ -3,33 +3,31 @@
 
   require '../includes/db.php';
 
+  if(!isset($_SESSION['email']) || !isset($_SESSION['reset_code_verified']) ||  !$_SESSION['reset_code_verified']){
+    header("Location: send-code.php");
+    exit();
+  }
+
   if($_SERVER['REQUEST_METHOD'] === "POST"){
-    $enteredCode = $_POST['code'];
-    $enteredCode = (int)$enteredCode;
-    $email = $_SESSION['email'];
+    $newPassword = $_POST['password'];
+    $confirmPassword = $_POST['confirm-password'];
 
-    if(!isset($_SESSION['email'])){
-      $_SESSION['error'] = "No email session found, please try again.";
-      header("Location: forgot-password.php");
+    if($newPassword === $confirmPassword){
+      $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+      $stmt = $pdo->prepare("UPDATE users SET PASSWORD = ? WHERE email = ?");
+      $stmt->execute([$hashedPassword, $_SESSIOON['reset_email']]);
+
+      unset($_SESSION['reset_email']);
+      unset($_SESSION['reset_code_verified']);
+
+      $_SESSION['success'] = "Your password has been reset successfully. You can now log in with your new password.";
+      header("Location: login.php");
       exit();
-    }
-
-    $stmt  = $pdo->prepare("SELECT reset_code FROM users WHERE email = ?");
-    $stmt->execute([$email]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if($user){
-      if($enteredCode === (int)$user['reset_code']){
-        $_SESSION['reset_email'] = $email;
-        $_SESSION['reset_code_verified'] = true;
-        
-        header("Location: new-password.php");
-        exit();
-      } else {
-        $_SESSION['error'] = "Invalid code. Please try again.";
-      }
     } else {
-      $_SESSION['error'] = "No user found with that email.";
+      $_SESSION['error'] = "Passwords do not match. Please try again.";
+      header("Location: new-password.php");
+      exit();
     }
   }
 ?>
@@ -55,7 +53,7 @@
   <div class="container">
     <div class="card">
       <img src="../assets/padayunITLogo.png" alt="" />
-      <h3 style="text-align: center">Enter code</h3>
+      <h3 style="text-align: center">New Password</h3>
       <?php if (isset($_SESSION['error'])): ?>
         <p id="alertMessage" style="border: 1px solid #F74141; padding: 0.5rem 1rem !important; border-radius: 0.25rem; display: block; color: #F74141;">
           <?= $_SESSION['error'];
@@ -69,9 +67,10 @@
           unset($_SESSION['success']); ?>
         </p>
       <?php endif; ?>
-      <form action="send-code.php" method="POST">
-        <input type="number" placeholder="Enter code" maxlength="6" name="code"/>
-        <button>Submit</button>
+      <form action="new-password.php" method="POST">
+        <input type="password" placeholder="New Password" name="password"/>
+        <input type="password" placeholder="Re-enter Password" name="confirm-password" />
+        <button>Change password</button>
       </form>
     </div>
   </div>
