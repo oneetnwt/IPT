@@ -1,71 +1,73 @@
 <?php
+  require '../vendor/autoload.php';
+  require '../includes/db.php';
+
+  $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+  $dotenv->load();
+
   session_start();
 
-  require '../includes/db.php';
 
   use PHPMailer\PHPMailer\PHPMailer;
   use PHPMailer\PHPMailer\Exception;
 
-  require '../vendor/autoload.php';
 
-  if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $email = $_POST['email'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $email = $_POST['email'];
 
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->execute([$email]);
+  $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+  $stmt->execute([$email]);
 
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+  $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if($user){
-      $reset_code = rand(100000, 999999);
+  if ($user) {
+    $reset_code = rand(100000, 999999);
 
-      $update = $pdo->prepare("UPDATE users SET reset_code = ? WHERE email = ?");
-      $update->execute([$reset_code, $email]);
+    $update = $pdo->prepare("UPDATE users SET reset_code = ? WHERE email = ?");
+    $update->execute([$reset_code, $email]);
 
-      $_SESSION['email'] = $email;
+    $_SESSION['email'] = $email;
 
-      $mail = new PHPMailer(true);
+    $mail = new PHPMailer(true);
 
-      try {
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = 'true';
-        $mail->Username = $_ENV['APP_EMAIL'];
-        $mail->Password = $_ENV['APP_PASSWORD'];
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
+    try {
+      $mail->isSMTP();
+      $mail->Host = 'smtp.gmail.com';
+      $mail->SMTPAuth = 'true';
+      $mail->Username = $_ENV['APP_EMAIL'];
+      $mail->Password = $_ENV['APP_PASSWORD'];
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+      $mail->Port = 587;
 
-        $mail->setFrom($_ENV['APP_EMAIL'], $_ENV['APP_NAME']);
-        $mail->addAddress($email, "THIS IS YOUR CLIENT");
+      $mail->setFrom($_ENV['APP_EMAIL'], $_ENV['APP_NAME']);
+      $mail->addAddress($email, "THIS IS YOUR CLIENT");
 
-        $mail->isHTML(true);
-        $mail->Subject = "Password Reset Code";
-        $mail->Body = "
+      $mail->isHTML(true);
+      $mail->Subject = "Password Reset Code";
+      $mail->Body = "
           <p>Hello, This is your password reset code</p>
 
           <div>{$reset_code}</div>
         ";
 
-        $mail->AltBody = "Hello, This is your password reset code: {$reset_code}";
-        $mail->send();
+      $mail->AltBody = "Hello, This is your password reset code: {$reset_code}";
+      $mail->send();
 
-        $_SESSION['email_sent'] = "true";
-        $_SESSION['success'] = "Verification code has been sent to your email";
+      $_SESSION['email_sent'] = "true";
+      $_SESSION['success'] = "Verification code has been sent to your email";
       header("Location: send-code.php");
       exit();
-      } catch (Exception $e) {
-        $_SESSION['Error'] = "Message could not be sent";
-        header("Location: forgot-password.php");
-        exit();
-      }
-
-      
-    } else {
-      $_SESSION['Error'] = "No user found with that email";
-        header("Location: forgot-password.php");
-        exit();
+    } catch (Exception $e) {
+      $_SESSION['Error'] = "Message could not be sent";
+      header("Location: forgot-password.php");
+      exit();
     }
+  } else {
+    $_SESSION['Error'] = "No user found with that email";
+    header("Location: forgot-password.php");
+    exit();
   }
+}
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +87,7 @@
       <img src="../assets/padayunITLogo.png" alt="" />
       <h1>Forgot Password</h1>
       <p id="alert_message">Please enter your email address</p>
-      
+
       <?php if (isset($_SESSION['error'])): ?>
         <p id="alertMessage" style="border: 1px solid #F74141; padding: 0.5rem 1rem !important; border-radius: 0.25rem; display: block; color: #F74141;">
           <?= $_SESSION['error'];
