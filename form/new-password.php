@@ -13,10 +13,10 @@
     $confirmPassword = $_POST['confirm-password'];
 
     if($newPassword === $confirmPassword){
-      $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+      $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
 
       $stmt = $pdo->prepare("UPDATE users SET PASSWORD = ? WHERE email = ?");
-      $stmt->execute([$hashedPassword, $_SESSIOON['reset_email']]);
+      $stmt->execute([$hashedPassword, $_SESSION['reset_email']]);
 
       unset($_SESSION['reset_email']);
       unset($_SESSION['reset_code_verified']);
