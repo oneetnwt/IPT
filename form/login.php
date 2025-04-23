@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
+$sitekey = $_ENV['RECAPTCHA_SITE_KEY'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +41,7 @@ session_start();
       <form action="login_validate.php" method="POST">
         <input type="text" placeholder="Username" name="username" />
         <input type="password" placeholder="Password" name="password" />
+        <div style="margin-bottom: 3px;" class="g-recaptcha" data-sitekey="<?= htmlspecialchars($sitekey)?>"></div>
         <button type="submit">Log in</button>
       </form>
       <a href="forgot-password.php" style="font-size: 0.75rem">Forgot password?</a>
@@ -43,6 +51,8 @@ session_start();
       </span>
     </div>
   </div>
+
+  <script src="https://www.google.com/recaptcha/api.js"></script>
 </body>
 
 </html>

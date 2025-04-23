@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 
@@ -36,7 +36,7 @@ session_start();
         </p>
       <?php endif; ?>
 
-      <form action="signup_validate.php" method="POST">
+      <form action="signup_validation.php" method="POST">
         <div class="name">
           <input type="text" placeholder="First name" id="firstName" name="firstname" />
           <input type="text" placeholder="Last name" id="lastName" name="lastname" />
